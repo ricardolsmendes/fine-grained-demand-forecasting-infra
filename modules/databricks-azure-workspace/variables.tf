@@ -14,18 +14,11 @@ variable "environment" {
 }
 
 variable "resource_group_name" {
-  description = "The name of the resource group."
+  description = "The name of the Azure resource group."
   type        = string
 }
 
-variable "key_vault_ip_rules" {
-  description = "List of public IP addresses to allow key vault access."
-  type        = list(string)
-  default     = []
-}
-
-variable "key_vault_virtual_network_subnet_ids" {
-  description = "List of virtual network subnet IDs to allow key vault access."
-  type        = list(string)
-  default     = []
+variable "key_vault_name" {
+  description = "The name of the Azure key vault."
+  type        = string
 }

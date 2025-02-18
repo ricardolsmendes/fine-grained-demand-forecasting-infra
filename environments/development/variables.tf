@@ -1,3 +1,6 @@
+# ===================================================================================== #
+#                                   PROJECT VARIABLES                                   #
+# ===================================================================================== #
 variable "project_name" {
   type        = string
   description = "The name of the project."
@@ -13,6 +16,9 @@ variable "human_friendly_project_name" {
   description = "The human-friendly name of the project."
 }
 
+# ===================================================================================== #
+#                                    AZURE VARIABLES                                    #
+# ===================================================================================== #
 variable "azure_tenant_id" {
   description = "The directory (tenant) ID for the Azure provider."
   type        = string
@@ -28,12 +34,12 @@ variable "azure_resource_group_name" {
   type        = string
 }
 
-variable "tf_azure_client_id" {
+variable "azure_client_id" {
   description = "The app (client) ID used by Terraform to authenticate against Azure."
   type        = string
 }
 
-variable "tf_azure_client_secret" {
+variable "azure_client_secret" {
   description = "Password used by Terraform to authenticate against Azure."
   type        = string
 }
@@ -48,4 +54,12 @@ variable "azure_key_vault_virtual_network_subnet_ids" {
   description = "List of virtual network subnet IDs to allow key vault access."
   type        = list(string)
   default     = []
+}
+
+# ===================================================================================== #
+#                                 DATABRICKS VARIABLES                                  #
+# ===================================================================================== #
+variable "databricks_workspace_host" {
+  description = "The Databricks workspace host."
+  type        = string
 }
