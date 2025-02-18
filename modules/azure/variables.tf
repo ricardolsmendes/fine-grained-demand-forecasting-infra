@@ -3,6 +3,11 @@ variable "project_name" {
   description = "The name of the project."
 }
 
+variable "project_short_name" {
+  type        = string
+  description = "The short name of the project."
+}
+
 variable "human_friendly_project_name" {
   type        = string
   description = "The human-friendly name of the project."

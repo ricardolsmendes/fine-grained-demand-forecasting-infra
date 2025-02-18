@@ -1,4 +1,4 @@
-# Fine-Grained Demand Forecast — environments
+# Fine-Grained Demand Forecasting — environments
 
 - [development](./development)
 

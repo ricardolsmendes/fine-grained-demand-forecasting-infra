@@ -1,4 +1,4 @@
-# Fine-Grained Demand Forecast — modules
+# Fine-Grained Demand Forecasting — modules
 
 - [azure](./azure)
 
