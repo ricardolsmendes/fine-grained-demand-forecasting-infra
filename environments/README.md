@@ -1,5 +1,5 @@
 # Fine-Grained Demand Forecasting — environments
 
-- [development](./development)
+- [azure-development](./azure-development)
 
 [<< back](..)

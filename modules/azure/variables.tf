@@ -1,3 +1,6 @@
+# ===================================================================================== #
+#                                   PROJECT VARIABLES                                   #
+# ===================================================================================== #
 variable "project_short_name" {
   type        = string
   description = "The short name of the project."
@@ -13,6 +16,9 @@ variable "environment" {
   description = "The deployment environment."
 }
 
+# ===================================================================================== #
+#                                    AZURE VARIABLES                                    #
+# ===================================================================================== #
 variable "resource_group_name" {
   description = "The name of the resource group."
   type        = string
@@ -28,4 +34,17 @@ variable "key_vault_virtual_network_subnet_ids" {
   description = "List of virtual network subnet IDs to allow key vault access."
   type        = list(string)
   default     = []
+}
+
+# ===================================================================================== #
+#                                   KAGGLE VARIABLES                                    #
+# ===================================================================================== #
+variable "kaggle_username" {
+  description = "The Kaggle username to be stored as a secret value."
+  type        = string
+}
+
+variable "kaggle_key" {
+  description = "The Kaggle key to be stored as a secret value."
+  type        = string
 }

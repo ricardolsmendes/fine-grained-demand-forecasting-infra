@@ -1,3 +1,6 @@
+# ===================================================================================== #
+#                                   PROJECT VARIABLES                                   #
+# ===================================================================================== #
 variable "project_short_name" {
   type        = string
   description = "The short name of the project."
@@ -13,6 +16,9 @@ variable "environment" {
   description = "The deployment environment."
 }
 
+# ===================================================================================== #
+#                                    AZURE VARIABLES                                    #
+# ===================================================================================== #
 variable "resource_group_name" {
   description = "The name of the Azure resource group."
   type        = string

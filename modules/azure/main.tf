@@ -21,3 +21,30 @@ resource "azurerm_key_vault" "this" {
     CreatedBy   = "Terraform"
   }
 }
+
+resource "azurerm_key_vault_access_policy" "this" {
+  key_vault_id = azurerm_key_vault.this.id
+  tenant_id    = data.azurerm_client_config.this.tenant_id
+  object_id    = data.azurerm_client_config.this.object_id
+
+  secret_permissions = [
+    "Delete", "Get", "Set"
+  ]
+}
+
+# ===================================================================================== #
+#                                     AZURE SECRETS                                     #
+#                                                                                       #
+# Created with Terraform to avoid manual updates to the key vault.                      #
+# ===================================================================================== #
+resource "azurerm_key_vault_secret" "kaggle_username" {
+  name         = "kaggle-username"
+  value        = var.kaggle_username
+  key_vault_id = azurerm_key_vault.this.id
+}
+
+resource "azurerm_key_vault_secret" "kaggle_key" {
+  name         = "kaggle-key"
+  value        = var.kaggle_key
+  key_vault_id = azurerm_key_vault.this.id
+}

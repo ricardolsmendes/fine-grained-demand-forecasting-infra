@@ -63,3 +63,16 @@ variable "databricks_workspace_host" {
   description = "The Databricks workspace host."
   type        = string
 }
+
+# ===================================================================================== #
+#                                   KAGGLE VARIABLES                                    #
+# ===================================================================================== #
+variable "kaggle_username" {
+  description = "The Kaggle username."
+  type        = string
+}
+
+variable "kaggle_key" {
+  description = "The Kaggle key."
+  type        = string
+}
