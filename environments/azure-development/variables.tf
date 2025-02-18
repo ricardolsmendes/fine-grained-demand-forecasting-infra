@@ -29,11 +29,6 @@ variable "azure_subscription_id" {
   type        = string
 }
 
-variable "azure_resource_group_name" {
-  description = "Name of the Azure resource group."
-  type        = string
-}
-
 variable "azure_client_id" {
   description = "The app (client) ID used by Terraform to authenticate against Azure."
   type        = string
@@ -41,6 +36,11 @@ variable "azure_client_id" {
 
 variable "azure_client_secret" {
   description = "Password used by Terraform to authenticate against Azure."
+  type        = string
+}
+
+variable "azure_resource_group_name" {
+  description = "Name of the Azure resource group."
   type        = string
 }
 
