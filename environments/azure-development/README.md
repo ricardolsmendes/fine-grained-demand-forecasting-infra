@@ -29,8 +29,8 @@ No resources.
 |------|-------------|------|---------|:--------:|
 | <a name="input_azure_client_id"></a> [azure\_client\_id](#input\_azure\_client\_id) | The app (client) ID used by Terraform to authenticate against Azure. | `string` | n/a | yes |
 | <a name="input_azure_client_secret"></a> [azure\_client\_secret](#input\_azure\_client\_secret) | Password used by Terraform to authenticate against Azure. | `string` | n/a | yes |
-| <a name="input_azure_key_vault_ip_rules"></a> [azure\_key\_vault\_ip\_rules](#input\_azure\_key\_vault\_ip\_rules) | List of public IP addresses to allow key vault access. | `list(string)` | `[]` | no |
-| <a name="input_azure_key_vault_virtual_network_subnet_ids"></a> [azure\_key\_vault\_virtual\_network\_subnet\_ids](#input\_azure\_key\_vault\_virtual\_network\_subnet\_ids) | List of virtual network subnet IDs to allow key vault access. | `list(string)` | `[]` | no |
+| <a name="input_azure_networking_ip_rules"></a> [azure\_networking\_ip\_rules](#input\_azure\_networking\_ip\_rules) | List of public IP addresses to allow Azure resource access. | `list(string)` | `[]` | no |
+| <a name="input_azure_networking_virtual_network_subnet_ids"></a> [azure\_networking\_virtual\_network\_subnet\_ids](#input\_azure\_networking\_virtual\_network\_subnet\_ids) | List of virtual network subnet IDs to allow Azure resource access. | `list(string)` | `[]` | no |
 | <a name="input_azure_resource_group_name"></a> [azure\_resource\_group\_name](#input\_azure\_resource\_group\_name) | Name of the Azure resource group. | `string` | n/a | yes |
 | <a name="input_azure_subscription_id"></a> [azure\_subscription\_id](#input\_azure\_subscription\_id) | The subscription ID for the Azure provider. | `string` | n/a | yes |
 | <a name="input_azure_tenant_id"></a> [azure\_tenant\_id](#input\_azure\_tenant\_id) | The directory (tenant) ID for the Azure provider. | `string` | n/a | yes |

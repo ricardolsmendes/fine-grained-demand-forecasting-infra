@@ -19,10 +19,18 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [azurerm_databricks_access_connector.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_access_connector) | resource |
 | [azurerm_key_vault.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault) | resource |
 | [azurerm_key_vault_access_policy.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_access_policy) | resource |
 | [azurerm_key_vault_secret.kaggle_key](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret) | resource |
 | [azurerm_key_vault_secret.kaggle_username](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret) | resource |
+| [azurerm_role_assignment.storage_blob_data_contributor](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
+| [azurerm_storage_account.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account) | resource |
+| [azurerm_storage_account_network_rules.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account_network_rules) | resource |
+| [azurerm_storage_container.landing](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_container) | resource |
+| [azurerm_storage_data_lake_gen2_filesystem.bronze](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_data_lake_gen2_filesystem) | resource |
+| [azurerm_storage_data_lake_gen2_filesystem.gold](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_data_lake_gen2_filesystem) | resource |
+| [azurerm_storage_data_lake_gen2_filesystem.silver](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_data_lake_gen2_filesystem) | resource |
 | [azurerm_client_config.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
 | [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 
@@ -34,8 +42,9 @@ No modules.
 | <a name="input_human_friendly_project_name"></a> [human\_friendly\_project\_name](#input\_human\_friendly\_project\_name) | The human-friendly name of the project. | `string` | n/a | yes |
 | <a name="input_kaggle_key"></a> [kaggle\_key](#input\_kaggle\_key) | The Kaggle key to be stored as a secret value. | `string` | n/a | yes |
 | <a name="input_kaggle_username"></a> [kaggle\_username](#input\_kaggle\_username) | The Kaggle username to be stored as a secret value. | `string` | n/a | yes |
-| <a name="input_key_vault_ip_rules"></a> [key\_vault\_ip\_rules](#input\_key\_vault\_ip\_rules) | List of public IP addresses to allow key vault access. | `list(string)` | `[]` | no |
-| <a name="input_key_vault_virtual_network_subnet_ids"></a> [key\_vault\_virtual\_network\_subnet\_ids](#input\_key\_vault\_virtual\_network\_subnet\_ids) | List of virtual network subnet IDs to allow key vault access. | `list(string)` | `[]` | no |
+| <a name="input_networking_ip_rules"></a> [networking\_ip\_rules](#input\_networking\_ip\_rules) | List of public IP addresses to allow resource access. | `list(string)` | `[]` | no |
+| <a name="input_networking_virtual_network_subnet_ids"></a> [networking\_virtual\_network\_subnet\_ids](#input\_networking\_virtual\_network\_subnet\_ids) | List of virtual network subnet IDs to allow resource access. | `list(string)` | `[]` | no |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The name of the project. | `string` | n/a | yes |
 | <a name="input_project_short_name"></a> [project\_short\_name](#input\_project\_short\_name) | The short name of the project. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group. | `string` | n/a | yes |
 
@@ -43,7 +52,10 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_databricks_access_connector_name"></a> [databricks\_access\_connector\_name](#output\_databricks\_access\_connector\_name) | n/a |
 | <a name="output_key_vault_name"></a> [key\_vault\_name](#output\_key\_vault\_name) | n/a |
+| <a name="output_landing_storage_container_name"></a> [landing\_storage\_container\_name](#output\_landing\_storage\_container\_name) | n/a |
+| <a name="output_storage_account_name"></a> [storage\_account\_name](#output\_storage\_account\_name) | n/a |
 <!-- END_TF_DOCS -->
 
 ---
