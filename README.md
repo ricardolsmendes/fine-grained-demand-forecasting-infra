@@ -8,7 +8,7 @@ details.
 
 ## Usage instructions
 
-1. Set up the IoT infrastructure using the available [environments](./environments/).
+1. Set up Azure and Databricks infrastructure using the available [environments](./environments/).
 
 ## How to contribute
 
