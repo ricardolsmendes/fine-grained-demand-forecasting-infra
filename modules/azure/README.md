@@ -1,7 +1,7 @@
 # azure module
 
-Azure infrastructure provisioning for a [customized approach to the Fine-grained Demand
-Forecasting Databricks accelerator](https://github.com/ricardolsmendes/fine-grained-demand-forecasting).
+Azure infrastructure provisioning for a [customized approach to the Databricks
+Fine-grained Demand Forecasting accelerator](https://github.com/ricardolsmendes/fine-grained-demand-forecasting).
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements

@@ -1,7 +1,7 @@
 # databricks-azure-workspace module
 
 Databricks (Azure) infrastructure provisioning for a [customized approach to the
-Fine-grained Demand Forecasting Databricks accelerator](https://github.com/ricardolsmendes/fine-grained-demand-forecasting).
+Fine-grained Demand Forecasting accelerator](https://github.com/ricardolsmendes/fine-grained-demand-forecasting).
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements

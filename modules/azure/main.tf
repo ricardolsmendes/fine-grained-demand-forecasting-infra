@@ -70,7 +70,6 @@ resource "azurerm_storage_account" "this" {
   location                 = data.azurerm_resource_group.this.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  is_hns_enabled           = true # Enable hierarchical namespace for ABFS.
 
   tags = {
     Project     = var.human_friendly_project_name
@@ -89,7 +88,7 @@ resource "azurerm_storage_account_network_rules" "this" {
   virtual_network_subnet_ids = var.networking_virtual_network_subnet_ids
 }
 
-# The data lake landing layer.
+# The data lake landing zone.
 resource "azurerm_storage_container" "landing" {
   name               = "landing"
   storage_account_id = azurerm_storage_account.this.id

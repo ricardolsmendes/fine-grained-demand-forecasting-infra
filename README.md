@@ -1,8 +1,7 @@
 # fine-grained-demand-forecasting-infra
 
-Infrastructure provisioning for a [customized approach to the
-Fine-grained Demand Forecasting Databricks accelerator](https://github.com/ricardolsmendes/fine-grained-demand-forecasting).
-
+Infrastructure provisioning for a [customized approach to the Databricks Fine-grained
+Demand Forecasting accelerator](https://github.com/ricardolsmendes/fine-grained-demand-forecasting).
 See the [environments](./environments/) and [modules](./modules/) documentation for
 details.
 

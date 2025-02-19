@@ -24,11 +24,11 @@ resource "databricks_catalog" "this" {
   }
 }
 
-# The data lake landing layer.
+# The data lake landing zone.
 resource "databricks_schema" "landing" {
   catalog_name = databricks_catalog.this.name
   name         = "landing"
-  comment      = "Landing layer used by the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
+  comment      = "Landing zone used by the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
 
   properties = {
     Project     = var.human_friendly_project_name
@@ -52,7 +52,7 @@ resource "databricks_external_location" "landing" {
     var.storage_account_name
   )
   credential_name = databricks_storage_credential.this.id
-  comment         = "Landing layer for the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
+  comment         = "Landing zone for the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
 }
 
 resource "databricks_volume" "kaggle" {
