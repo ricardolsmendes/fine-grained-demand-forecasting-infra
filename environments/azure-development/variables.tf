@@ -44,14 +44,14 @@ variable "azure_resource_group_name" {
   type        = string
 }
 
-variable "azure_key_vault_ip_rules" {
-  description = "List of public IP addresses to allow key vault access."
+variable "azure_networking_ip_rules" {
+  description = "List of public IP addresses to allow Azure resource access."
   type        = list(string)
   default     = []
 }
 
-variable "azure_key_vault_virtual_network_subnet_ids" {
-  description = "List of virtual network subnet IDs to allow key vault access."
+variable "azure_networking_virtual_network_subnet_ids" {
+  description = "List of virtual network subnet IDs to allow Azure resource access."
   type        = list(string)
   default     = []
 }

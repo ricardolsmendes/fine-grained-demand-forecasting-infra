@@ -1,13 +1,14 @@
 module "azure" {
   source = "../../modules/azure"
 
+  project_name                = var.project_name
   project_short_name          = var.project_short_name
   human_friendly_project_name = var.human_friendly_project_name
   environment                 = local.environment
 
-  resource_group_name                  = var.azure_resource_group_name
-  key_vault_ip_rules                   = var.azure_key_vault_ip_rules
-  key_vault_virtual_network_subnet_ids = var.azure_key_vault_virtual_network_subnet_ids
+  resource_group_name                   = var.azure_resource_group_name
+  networking_ip_rules                   = var.azure_networking_ip_rules
+  networking_virtual_network_subnet_ids = var.azure_networking_virtual_network_subnet_ids
 
   kaggle_username = var.kaggle_username
   kaggle_key      = var.kaggle_key
@@ -19,10 +20,14 @@ module "databricks_azure_workspace" {
     databricks = databricks.workspace
   }
 
+  project_name                = var.project_name
   project_short_name          = var.project_short_name
   human_friendly_project_name = var.human_friendly_project_name
   environment                 = local.environment
 
-  resource_group_name = var.azure_resource_group_name
-  key_vault_name      = module.azure.key_vault_name
+  resource_group_name              = var.azure_resource_group_name
+  key_vault_name                   = module.azure.key_vault_name
+  storage_account_name             = module.azure.storage_account_name
+  landing_storage_container_name   = module.azure.landing_storage_container_name
+  databricks_access_connector_name = module.azure.databricks_access_connector_name
 }

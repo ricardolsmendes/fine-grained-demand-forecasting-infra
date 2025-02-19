@@ -19,8 +19,6 @@ provider "azurerm" {
 
   client_id     = var.azure_client_id
   client_secret = var.azure_client_secret
-
-  resource_provider_registrations = "none"
 }
 
 provider "databricks" {

@@ -1,6 +1,11 @@
 # ===================================================================================== #
 #                                   PROJECT VARIABLES                                   #
 # ===================================================================================== #
+variable "project_name" {
+  type        = string
+  description = "The name of the project."
+}
+
 variable "project_short_name" {
   type        = string
   description = "The short name of the project."
@@ -24,14 +29,14 @@ variable "resource_group_name" {
   type        = string
 }
 
-variable "key_vault_ip_rules" {
-  description = "List of public IP addresses to allow key vault access."
+variable "networking_ip_rules" {
+  description = "List of public IP addresses to allow resource access."
   type        = list(string)
   default     = []
 }
 
-variable "key_vault_virtual_network_subnet_ids" {
-  description = "List of virtual network subnet IDs to allow key vault access."
+variable "networking_virtual_network_subnet_ids" {
+  description = "List of virtual network subnet IDs to allow resource access."
   type        = list(string)
   default     = []
 }
