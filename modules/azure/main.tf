@@ -1,3 +1,6 @@
+# ===================================================================================== #
+#                             KEY VAULT RELATED RESOURCES                               #
+# ===================================================================================== #
 resource "azurerm_key_vault" "this" {
   name                       = "${var.project_short_name}-${var.environment}"
   location                   = data.azurerm_resource_group.this.location
@@ -58,6 +61,9 @@ resource "azurerm_key_vault_secret" "kaggle_key" {
   }
 }
 
+# ===================================================================================== #
+#                          STORAGE ACCOUNT RELATED RESOURCES                            #
+# ===================================================================================== #
 resource "azurerm_storage_account" "this" {
   name                     = replace("${var.project_short_name}-${var.environment}", "-", "")
   resource_group_name      = data.azurerm_resource_group.this.name
@@ -83,26 +89,33 @@ resource "azurerm_storage_account_network_rules" "this" {
   virtual_network_subnet_ids = var.networking_virtual_network_subnet_ids
 }
 
+# The data lake landing layer.
 resource "azurerm_storage_container" "landing" {
   name               = "landing"
   storage_account_id = azurerm_storage_account.this.id
 }
 
+# The data lake bronze layer.
 resource "azurerm_storage_data_lake_gen2_filesystem" "bronze" {
   name               = "bronze"
   storage_account_id = azurerm_storage_account.this.id
 }
 
+# The data lake silver layer.
 resource "azurerm_storage_data_lake_gen2_filesystem" "silver" {
   name               = "silver"
   storage_account_id = azurerm_storage_account.this.id
 }
 
+# The data lake gold layer.
 resource "azurerm_storage_data_lake_gen2_filesystem" "gold" {
   name               = "gold"
   storage_account_id = azurerm_storage_account.this.id
 }
 
+# ===================================================================================== #
+#                      DATABRICKS CONNECTIVITY RELATED RESOURCES                        #
+# ===================================================================================== #
 resource "azurerm_databricks_access_connector" "this" {
   name                = "${var.project_name}-${var.environment}"
   resource_group_name = data.azurerm_resource_group.this.name

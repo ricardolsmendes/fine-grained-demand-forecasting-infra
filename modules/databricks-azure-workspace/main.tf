@@ -1,3 +1,6 @@
+# ===================================================================================== #
+#                           SECRET SCOPE RELATED RESOURCES                              #
+# ===================================================================================== #
 resource "databricks_secret_scope" "this" {
   name = var.key_vault_name # Same as the underlying key vault.
 
@@ -7,6 +10,9 @@ resource "databricks_secret_scope" "this" {
   }
 }
 
+# ===================================================================================== #
+#                           UNIT CATALOG RELATED RESOURCES                              #
+# ===================================================================================== #
 resource "databricks_catalog" "this" {
   name    = replace("${var.project_short_name}-${var.environment}", "-", "_")
   comment = "Catalog used by the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
@@ -18,6 +24,7 @@ resource "databricks_catalog" "this" {
   }
 }
 
+# The data lake landing layer.
 resource "databricks_schema" "landing" {
   catalog_name = databricks_catalog.this.name
   name         = "landing"
