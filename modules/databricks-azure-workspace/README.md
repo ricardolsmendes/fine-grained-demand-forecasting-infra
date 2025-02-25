@@ -24,8 +24,10 @@ No modules.
 | Name | Type |
 |------|------|
 | [databricks_catalog.this](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/catalog) | resource |
-| [databricks_external_location.landing](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/external_location) | resource |
-| [databricks_schema.landing](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/schema) | resource |
+| [databricks_external_location.dl_landing](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/external_location) | resource |
+| [databricks_external_location.dl_layers](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/external_location) | resource |
+| [databricks_schema.dl_landing](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/schema) | resource |
+| [databricks_schema.dl_layers](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/schema) | resource |
 | [databricks_secret_scope.this](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/secret_scope) | resource |
 | [databricks_storage_credential.this](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/storage_credential) | resource |
 | [databricks_volume.kaggle](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/volume) | resource |
@@ -36,11 +38,12 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_data_lake_landing_container_name"></a> [data\_lake\_landing\_container\_name](#input\_data\_lake\_landing\_container\_name) | The name of the storage container for the data lake's landing zone. | `string` | n/a | yes |
+| <a name="input_data_lake_layers"></a> [data\_lake\_layers](#input\_data\_lake\_layers) | The data lake layers. | <pre>map(object({<br/>    name           = string<br/>    container_name = string<br/>  }))</pre> | n/a | yes |
 | <a name="input_databricks_access_connector_name"></a> [databricks\_access\_connector\_name](#input\_databricks\_access\_connector\_name) | The name of the Azure Databricks access connector. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The deployment environment. | `string` | n/a | yes |
 | <a name="input_human_friendly_project_name"></a> [human\_friendly\_project\_name](#input\_human\_friendly\_project\_name) | The human-friendly name of the project. | `string` | n/a | yes |
 | <a name="input_key_vault_name"></a> [key\_vault\_name](#input\_key\_vault\_name) | The name of the Azure key vault. | `string` | n/a | yes |
-| <a name="input_landing_storage_container_name"></a> [landing\_storage\_container\_name](#input\_landing\_storage\_container\_name) | The name of the storage container for the data lake's landing layer. | `string` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The name of the project. | `string` | n/a | yes |
 | <a name="input_project_short_name"></a> [project\_short\_name](#input\_project\_short\_name) | The short name of the project. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the Azure resource group. | `string` | n/a | yes |

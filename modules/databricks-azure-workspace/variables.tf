@@ -21,6 +21,14 @@ variable "environment" {
   description = "The deployment environment."
 }
 
+variable "data_lake_layers" {
+  type = map(object({
+    name           = string
+    container_name = string
+  }))
+  description = "The data lake layers."
+}
+
 # ===================================================================================== #
 #                                    AZURE VARIABLES                                    #
 # ===================================================================================== #
@@ -39,8 +47,8 @@ variable "storage_account_name" {
   type        = string
 }
 
-variable "landing_storage_container_name" {
-  description = "The name of the storage container for the data lake's landing layer."
+variable "data_lake_landing_container_name" {
+  description = "The name of the storage container for the data lake's landing zone."
   type        = string
 }
 

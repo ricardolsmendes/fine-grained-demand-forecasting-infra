@@ -70,6 +70,7 @@ resource "azurerm_storage_account" "this" {
   location                 = data.azurerm_resource_group.this.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
+  is_hns_enabled           = true # Required to create external locations in Databricks.
 
   tags = {
     Project     = var.human_friendly_project_name
@@ -89,26 +90,16 @@ resource "azurerm_storage_account_network_rules" "this" {
 }
 
 # The data lake landing zone.
-resource "azurerm_storage_container" "landing" {
+resource "azurerm_storage_container" "dl_landing" {
   name               = "landing"
   storage_account_id = azurerm_storage_account.this.id
 }
 
-# The data lake bronze layer.
-resource "azurerm_storage_data_lake_gen2_filesystem" "bronze" {
-  name               = "bronze"
-  storage_account_id = azurerm_storage_account.this.id
-}
+# The data lake bronze, silver, and gold layers.
+resource "azurerm_storage_data_lake_gen2_filesystem" "dl_layers" {
+  for_each = local.data_lake_layers
 
-# The data lake silver layer.
-resource "azurerm_storage_data_lake_gen2_filesystem" "silver" {
-  name               = "silver"
-  storage_account_id = azurerm_storage_account.this.id
-}
-
-# The data lake gold layer.
-resource "azurerm_storage_data_lake_gen2_filesystem" "gold" {
-  name               = "gold"
+  name               = each.value.name
   storage_account_id = azurerm_storage_account.this.id
 }
 
