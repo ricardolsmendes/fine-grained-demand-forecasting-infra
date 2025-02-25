@@ -45,10 +45,10 @@ resource "databricks_storage_credential" "this" {
   comment = "Used by the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
 }
 
-resource "databricks_external_location" "landing" {
+resource "databricks_external_location" "dl_landing" {
   name = "landing"
   url = format("abfss://%s@%s.dfs.core.windows.net",
-    var.landing_storage_container_name,
+    var.dl_landing_container_name,
     var.storage_account_name
   )
   credential_name = databricks_storage_credential.this.id
@@ -60,6 +60,6 @@ resource "databricks_volume" "kaggle" {
   catalog_name     = databricks_catalog.this.name
   schema_name      = databricks_schema.landing.name
   volume_type      = "EXTERNAL"
-  storage_location = databricks_external_location.landing.url
+  storage_location = databricks_external_location.dl_landing.url
   comment          = "Used by the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
 }

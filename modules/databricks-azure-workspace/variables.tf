@@ -39,8 +39,8 @@ variable "storage_account_name" {
   type        = string
 }
 
-variable "landing_storage_container_name" {
-  description = "The name of the storage container for the data lake's landing layer."
+variable "dl_landing_container_name" {
+  description = "The name of the storage container for the data lake's landing zone."
   type        = string
 }
 
