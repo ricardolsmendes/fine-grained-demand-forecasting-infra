@@ -90,3 +90,12 @@ resource "databricks_external_location" "dl_layers" {
   credential_name = databricks_storage_credential.this.id
   comment         = "Data lake ${each.value.name} layer for the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
 }
+
+resource "databricks_sql_table" "bronze_kaggle_train" {
+  name               = "kaggle_train"
+  catalog_name       = databricks_catalog.this.name
+  schema_name        = databricks_schema.dl_layers["bronze"].name
+  table_type         = "MANAGED"
+  data_source_format = "DELTA"
+  storage_location   = databricks_external_location.dl_layers["bronze"].url
+}

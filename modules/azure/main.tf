@@ -79,15 +79,13 @@ resource "azurerm_storage_account" "this" {
   }
 }
 
-resource "azurerm_storage_account_network_rules" "this" {
-  storage_account_id = azurerm_storage_account.this.id
-  default_action     = "Deny"
-  bypass = [
-    "AzureServices"
-  ]
-  ip_rules                   = var.networking_ip_rules
-  virtual_network_subnet_ids = var.networking_virtual_network_subnet_ids
-}
+# Disabling the storage account network rules while we clarify the requirements.
+# resource "azurerm_storage_account_network_rules" "this" {
+#   storage_account_id         = azurerm_storage_account.this.id
+#   default_action             = "Deny"
+#   ip_rules                   = var.networking_ip_rules
+#   virtual_network_subnet_ids = var.networking_virtual_network_subnet_ids
+# }
 
 # The data lake landing zone.
 resource "azurerm_storage_container" "dl_landing" {
