@@ -55,8 +55,8 @@ resource "databricks_external_location" "dl_landing" {
   comment         = "Landing zone for the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
 }
 
-resource "databricks_volume" "kaggle" {
-  name             = "kaggle"
+resource "databricks_volume" "dl_landing_storage" {
+  name             = "storage"
   catalog_name     = databricks_catalog.this.name
   schema_name      = databricks_schema.dl_landing.name
   volume_type      = "EXTERNAL"
@@ -91,7 +91,7 @@ resource "databricks_external_location" "dl_layers" {
   comment         = "Data lake ${each.value.name} layer for the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
 }
 
-resource "databricks_sql_table" "bronze_kaggle_train" {
+resource "databricks_sql_table" "dl_bronze_kaggle_train" {
   name               = "kaggle_train"
   catalog_name       = databricks_catalog.this.name
   schema_name        = databricks_schema.dl_layers["bronze"].name
