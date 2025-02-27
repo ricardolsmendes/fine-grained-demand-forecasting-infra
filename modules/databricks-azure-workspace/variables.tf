@@ -21,14 +21,6 @@ variable "environment" {
   description = "The deployment environment."
 }
 
-variable "data_lake_layers" {
-  type = map(object({
-    name           = string
-    container_name = string
-  }))
-  description = "The data lake layers."
-}
-
 # ===================================================================================== #
 #                                    AZURE VARIABLES                                    #
 # ===================================================================================== #
@@ -42,6 +34,11 @@ variable "key_vault_name" {
   type        = string
 }
 
+variable "databricks_access_connector_name" {
+  description = "The name of the Azure Databricks access connector."
+  type        = string
+}
+
 variable "storage_account_name" {
   description = "The name of the storage account used as an external location by UC."
   type        = string
@@ -52,7 +49,10 @@ variable "data_lake_landing_container_name" {
   type        = string
 }
 
-variable "databricks_access_connector_name" {
-  description = "The name of the Azure Databricks access connector."
-  type        = string
+variable "data_lake_layers" {
+  type = map(object({
+    name           = string
+    container_name = string
+  }))
+  description = "The data lake layers."
 }

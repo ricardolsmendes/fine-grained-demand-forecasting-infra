@@ -95,7 +95,7 @@ resource "databricks_sql_table" "bronze_kaggle_train" {
   name               = "kaggle_train"
   catalog_name       = databricks_catalog.this.name
   schema_name        = databricks_schema.dl_layers["bronze"].name
-  table_type         = "MANAGED"
+  table_type         = "EXTERNAL"
   data_source_format = "DELTA"
-  storage_location   = databricks_external_location.dl_layers["bronze"].url
+  storage_location   = "${databricks_external_location.dl_layers["bronze"].url}/kaggle/train"
 }
