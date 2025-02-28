@@ -55,8 +55,8 @@ resource "databricks_external_location" "dl_landing" {
   comment         = "Landing zone for the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
 }
 
-resource "databricks_volume" "dl_landing_storage" {
-  name             = "storage"
+resource "databricks_volume" "dl_landing_blob_storage" {
+  name             = "blob_storage"
   catalog_name     = databricks_catalog.this.name
   schema_name      = databricks_schema.dl_landing.name
   volume_type      = "EXTERNAL"

@@ -34,7 +34,7 @@ No modules.
 | [databricks_sql_table.dl_gold_store_item_forecasts](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/sql_table) | resource |
 | [databricks_sql_table.dl_silver_store_item_history](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/sql_table) | resource |
 | [databricks_storage_credential.this](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/storage_credential) | resource |
-| [databricks_volume.dl_landing_storage](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/volume) | resource |
+| [databricks_volume.dl_landing_blob_storage](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/volume) | resource |
 | [azurerm_databricks_access_connector.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/databricks_access_connector) | data source |
 | [azurerm_key_vault.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/key_vault) | data source |
 
