@@ -13,6 +13,14 @@ resource "databricks_secret_scope" "this" {
 # ===================================================================================== #
 #                           UNIT CATALOG RELATED RESOURCES                              #
 # ===================================================================================== #
+resource "databricks_storage_credential" "this" {
+  name = "${var.project_name}-${var.environment}"
+  azure_managed_identity {
+    access_connector_id = data.azurerm_databricks_access_connector.this.id
+  }
+  comment = "Used by the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
+}
+
 resource "databricks_external_location" "uc_metastore" {
   name = "uc-metastore-${var.environment}"
   url = format("abfss://%s@%s.dfs.core.windows.net",
@@ -33,14 +41,6 @@ resource "databricks_catalog" "this" {
     Environment = var.environment
     CreatedBy   = "Terraform"
   }
-}
-
-resource "databricks_storage_credential" "this" {
-  name = "${var.project_name}-${var.environment}"
-  azure_managed_identity {
-    access_connector_id = data.azurerm_databricks_access_connector.this.id
-  }
-  comment = "Used by the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
 }
 
 # The data lake layers.
