@@ -44,15 +44,7 @@ variable "storage_account_name" {
   type        = string
 }
 
-variable "data_lake_landing_container_name" {
-  description = "The name of the storage container for the data lake's landing zone."
+variable "unity_catalog_metastore_container_name" {
+  description = "Name of the storage container for the Unity Catalog metastore."
   type        = string
-}
-
-variable "data_lake_layers" {
-  type = map(object({
-    name           = string
-    container_name = string
-  }))
-  description = "The data lake layers."
 }

@@ -87,17 +87,9 @@ resource "azurerm_storage_account" "this" {
 #   virtual_network_subnet_ids = var.networking_virtual_network_subnet_ids
 # }
 
-# The data lake landing zone.
-resource "azurerm_storage_container" "dl_landing" {
-  name               = "landing"
-  storage_account_id = azurerm_storage_account.this.id
-}
-
-# The data lake bronze, silver, and gold layers.
-resource "azurerm_storage_data_lake_gen2_filesystem" "dl_layers" {
-  for_each = local.data_lake_layers
-
-  name               = each.value.name
+# The Unity Catalog metastore container.
+resource "azurerm_storage_data_lake_gen2_filesystem" "uc_metastore" {
+  name               = "uc-metastore-${var.environment}"
   storage_account_id = azurerm_storage_account.this.id
 }
 
