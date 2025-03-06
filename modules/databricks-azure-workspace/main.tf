@@ -11,7 +11,7 @@ resource "databricks_secret_scope" "this" {
 }
 
 # ===================================================================================== #
-#                           UNIT CATALOG RELATED RESOURCES                              #
+#                            UNIT CATALOG RELATED RESOURCES                             #
 # ===================================================================================== #
 resource "databricks_storage_credential" "this" {
   name = "${var.project_name}-${var.environment}"
@@ -24,8 +24,8 @@ resource "databricks_storage_credential" "this" {
 resource "databricks_external_location" "uc_metastore" {
   name = "uc-metastore-${var.environment}"
   url = format("abfss://%s@%s.dfs.core.windows.net",
-    var.unity_catalog_metastore_container_name,
-    var.storage_account_name
+    var.uc_metastore_container_name,
+    var.uc_metastore_storage_account_name
   )
   credential_name = databricks_storage_credential.this.id
   comment         = "Unity Catalog metastore for the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."

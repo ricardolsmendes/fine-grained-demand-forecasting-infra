@@ -39,12 +39,12 @@ variable "databricks_access_connector_name" {
   type        = string
 }
 
-variable "storage_account_name" {
-  description = "The name of the storage account used as an external location by UC."
+variable "uc_metastore_storage_account_name" {
+  description = "Name of the storage account for the Unity Catalog metastore."
   type        = string
 }
 
-variable "unity_catalog_metastore_container_name" {
+variable "uc_metastore_container_name" {
   description = "Name of the storage container for the Unity Catalog metastore."
   type        = string
 }
