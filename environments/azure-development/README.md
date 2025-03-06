@@ -6,7 +6,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.19.0 |
-| <a name="requirement_databricks"></a> [databricks](#requirement\_databricks) | ~> 1.66.0 |
+| <a name="requirement_databricks"></a> [databricks](#requirement\_databricks) | ~> 1.68.0 |
 
 ## Providers
 

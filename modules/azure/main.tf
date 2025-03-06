@@ -31,8 +31,13 @@ resource "azurerm_key_vault_access_policy" "this" {
   object_id    = data.azurerm_client_config.this.object_id
 
   secret_permissions = [
+    "Backup",
     "Delete",
     "Get",
+    "List",
+    "Purge",
+    "Recover",
+    "Restore",
     "Set"
   ]
 }
@@ -62,15 +67,16 @@ resource "azurerm_key_vault_secret" "kaggle_key" {
 }
 
 # ===================================================================================== #
-#                          STORAGE ACCOUNT RELATED RESOURCES                            #
+#                           STORAGE ACCOUNT RELATED RESOURCES                           #
 # ===================================================================================== #
-resource "azurerm_storage_account" "this" {
+# Storage account for the Unity Catalog metastore.
+resource "azurerm_storage_account" "databricks_uc_metastore" {
   name                     = replace("${var.project_short_name}-${var.environment}", "-", "")
   resource_group_name      = data.azurerm_resource_group.this.name
   location                 = data.azurerm_resource_group.this.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  is_hns_enabled           = true # Required to create external locations in Databricks.
+  is_hns_enabled           = true # Enables hierarchical namespace.
 
   tags = {
     Project     = var.human_friendly_project_name
@@ -81,28 +87,20 @@ resource "azurerm_storage_account" "this" {
 
 # Disabling the storage account network rules while we clarify the requirements.
 # resource "azurerm_storage_account_network_rules" "this" {
-#   storage_account_id         = azurerm_storage_account.this.id
+#   storage_account_id         = azurerm_storage_account.databricks_uc_metastore.id
 #   default_action             = "Deny"
 #   ip_rules                   = var.networking_ip_rules
 #   virtual_network_subnet_ids = var.networking_virtual_network_subnet_ids
 # }
 
-# The data lake landing zone.
-resource "azurerm_storage_container" "dl_landing" {
-  name               = "landing"
-  storage_account_id = azurerm_storage_account.this.id
-}
-
-# The data lake bronze, silver, and gold layers.
-resource "azurerm_storage_data_lake_gen2_filesystem" "dl_layers" {
-  for_each = local.data_lake_layers
-
-  name               = each.value.name
-  storage_account_id = azurerm_storage_account.this.id
+# Storage container for the Unity Catalog metastore.
+resource "azurerm_storage_data_lake_gen2_filesystem" "databricks_uc_metastore" {
+  name               = "uc-metastore-${var.environment}"
+  storage_account_id = azurerm_storage_account.databricks_uc_metastore.id
 }
 
 # ===================================================================================== #
-#                      DATABRICKS CONNECTIVITY RELATED RESOURCES                        #
+#                       DATABRICKS CONNECTIVITY RELATED RESOURCES                       #
 # ===================================================================================== #
 resource "azurerm_databricks_access_connector" "this" {
   name                = "${var.project_name}-${var.environment}"
@@ -121,7 +119,7 @@ resource "azurerm_databricks_access_connector" "this" {
 }
 
 resource "azurerm_role_assignment" "storage_blob_data_contributor" {
-  scope                = azurerm_storage_account.this.id
+  scope                = azurerm_storage_account.databricks_uc_metastore.id
   role_definition_name = "Storage Blob Data Contributor"
   principal_id         = azurerm_databricks_access_connector.this.identity[0].principal_id
 }
