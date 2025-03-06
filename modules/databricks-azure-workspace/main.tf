@@ -18,23 +18,23 @@ resource "databricks_storage_credential" "this" {
   azure_managed_identity {
     access_connector_id = data.azurerm_databricks_access_connector.this.id
   }
-  comment = "Used by the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
+  comment = "Used by the ${var.human_friendly_project_name} in the ${var.environment} environment."
 }
 
 resource "databricks_external_location" "uc_metastore" {
-  name = "uc-metastore-${var.environment}"
+  name = "${var.project_short_name}-uc-metastore-${var.environment}"
   url = format("abfss://%s@%s.dfs.core.windows.net",
     var.uc_metastore_container_name,
     var.uc_metastore_storage_account_name
   )
   credential_name = databricks_storage_credential.this.id
-  comment         = "Unity Catalog metastore for the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
+  comment         = "Unity Catalog metastore for the ${var.human_friendly_project_name} in the ${var.environment} environment."
 }
 
 resource "databricks_catalog" "this" {
   name         = replace("${var.project_short_name}-${var.environment}", "-", "_")
   storage_root = databricks_external_location.uc_metastore.url
-  comment      = "Catalog used by the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
+  comment      = "Catalog used by the ${var.human_friendly_project_name} in the ${var.environment} environment."
 
   properties = {
     Project     = var.human_friendly_project_name
@@ -49,7 +49,7 @@ resource "databricks_schema" "dl_layers" {
 
   catalog_name = databricks_catalog.this.name
   name         = each.value.name
-  comment      = "Data lake ${each.value.name} layer used by the ${var.human_friendly_project_name} accelerator in the ${var.environment} environment."
+  comment      = "Data lake ${each.value.name} layer used by the ${var.human_friendly_project_name} in the ${var.environment} environment."
 
   properties = {
     Project     = var.human_friendly_project_name

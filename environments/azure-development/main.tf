@@ -22,6 +22,9 @@ module "azure" {
 # ===================================================================================== #
 module "databricks_azure_workspace" {
   source = "../../modules/databricks-azure-workspace"
+  depends_on = [
+    module.azure
+  ]
   providers = {
     databricks = databricks.workspace
   }
