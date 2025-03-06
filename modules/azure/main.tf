@@ -86,7 +86,7 @@ resource "azurerm_storage_account" "databricks_uc_metastore" {
 }
 
 # Disabling the storage account network rules while we clarify the requirements.
-# resource "azurerm_storage_account_network_rules" "databricks_uc_metastore" {
+# resource "azurerm_storage_account_network_rules" "this" {
 #   storage_account_id         = azurerm_storage_account.databricks_uc_metastore.id
 #   default_action             = "Deny"
 #   ip_rules                   = var.networking_ip_rules
