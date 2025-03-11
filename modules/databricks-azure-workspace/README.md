@@ -24,7 +24,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [databricks_catalog.this](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/catalog) | resource |
-| [databricks_external_location.uc_metastore](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/external_location) | resource |
+| [databricks_external_location.catalog_storage_root](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/external_location) | resource |
 | [databricks_schema.dl_layers](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/schema) | resource |
 | [databricks_secret_scope.this](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/secret_scope) | resource |
 | [databricks_storage_credential.this](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/storage_credential) | resource |
@@ -35,15 +35,15 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_databricks_access_connector_name"></a> [databricks\_access\_connector\_name](#input\_databricks\_access\_connector\_name) | The name of the Azure Databricks access connector. | `string` | n/a | yes |
+| <a name="input_catalog_root_storage_account_name"></a> [catalog\_root\_storage\_account\_name](#input\_catalog\_root\_storage\_account\_name) | Name of the storage account where data for Unity Catalog managed assets will be stored. | `string` | n/a | yes |
+| <a name="input_catalog_storage_root_container_name"></a> [catalog\_storage\_root\_container\_name](#input\_catalog\_storage\_root\_container\_name) | Name of the container where data for Unity Catalog managed assets will be stored. | `string` | n/a | yes |
+| <a name="input_databricks_access_connector_name"></a> [databricks\_access\_connector\_name](#input\_databricks\_access\_connector\_name) | The name of the Access Connector for Azure Databricks. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The deployment environment. | `string` | n/a | yes |
 | <a name="input_human_friendly_project_name"></a> [human\_friendly\_project\_name](#input\_human\_friendly\_project\_name) | The human-friendly name of the project. | `string` | n/a | yes |
 | <a name="input_key_vault_name"></a> [key\_vault\_name](#input\_key\_vault\_name) | The name of the Azure key vault. | `string` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The name of the project. | `string` | n/a | yes |
 | <a name="input_project_short_name"></a> [project\_short\_name](#input\_project\_short\_name) | The short name of the project. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the Azure resource group. | `string` | n/a | yes |
-| <a name="input_uc_metastore_container_name"></a> [uc\_metastore\_container\_name](#input\_uc\_metastore\_container\_name) | Name of the storage container for the Unity Catalog metastore. | `string` | n/a | yes |
-| <a name="input_uc_metastore_storage_account_name"></a> [uc\_metastore\_storage\_account\_name](#input\_uc\_metastore\_storage\_account\_name) | Name of the storage account for the Unity Catalog metastore. | `string` | n/a | yes |
 
 ## Outputs
 

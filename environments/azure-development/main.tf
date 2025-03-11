@@ -34,9 +34,9 @@ module "databricks_azure_workspace" {
   human_friendly_project_name = var.human_friendly_project_name
   environment                 = local.environment
 
-  resource_group_name               = var.azure_resource_group_name
-  key_vault_name                    = module.azure.key_vault_name
-  databricks_access_connector_name  = module.azure.databricks_access_connector_name
-  uc_metastore_storage_account_name = module.azure.databricks_uc_metastore_storage_account_name
-  uc_metastore_container_name       = module.azure.databricks_uc_metastore_container_name
+  resource_group_name                 = var.azure_resource_group_name
+  key_vault_name                      = module.azure.key_vault_name
+  databricks_access_connector_name    = module.azure.databricks_access_connector_name
+  catalog_root_storage_account_name   = module.azure.uc_catalog_root_storage_account_name
+  catalog_storage_root_container_name = module.azure.uc_catalog_root_container_name
 }

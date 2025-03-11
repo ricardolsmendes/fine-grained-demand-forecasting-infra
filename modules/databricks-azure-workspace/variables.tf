@@ -35,16 +35,16 @@ variable "key_vault_name" {
 }
 
 variable "databricks_access_connector_name" {
-  description = "The name of the Azure Databricks access connector."
+  description = "The name of the Access Connector for Azure Databricks."
   type        = string
 }
 
-variable "uc_metastore_storage_account_name" {
-  description = "Name of the storage account for the Unity Catalog metastore."
+variable "catalog_root_storage_account_name" {
+  description = "Name of the storage account where data for Unity Catalog managed assets will be stored."
   type        = string
 }
 
-variable "uc_metastore_container_name" {
-  description = "Name of the storage container for the Unity Catalog metastore."
+variable "catalog_storage_root_container_name" {
+  description = "Name of the container where data for Unity Catalog managed assets will be stored."
   type        = string
 }

@@ -28,8 +28,8 @@ No modules.
 | [azurerm_key_vault_secret.kaggle_key](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret) | resource |
 | [azurerm_key_vault_secret.kaggle_username](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret) | resource |
 | [azurerm_role_assignment.storage_blob_data_contributor](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
-| [azurerm_storage_account.databricks_uc_metastore](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account) | resource |
-| [azurerm_storage_data_lake_gen2_filesystem.databricks_uc_metastore](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_data_lake_gen2_filesystem) | resource |
+| [azurerm_storage_account.uc_catalog_root](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account) | resource |
+| [azurerm_storage_data_lake_gen2_filesystem.uc_catalog_root](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_data_lake_gen2_filesystem) | resource |
 | [azurerm_client_config.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
 | [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 
@@ -52,9 +52,9 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_databricks_access_connector_name"></a> [databricks\_access\_connector\_name](#output\_databricks\_access\_connector\_name) | n/a |
-| <a name="output_databricks_uc_metastore_container_name"></a> [databricks\_uc\_metastore\_container\_name](#output\_databricks\_uc\_metastore\_container\_name) | n/a |
-| <a name="output_databricks_uc_metastore_storage_account_name"></a> [databricks\_uc\_metastore\_storage\_account\_name](#output\_databricks\_uc\_metastore\_storage\_account\_name) | n/a |
 | <a name="output_key_vault_name"></a> [key\_vault\_name](#output\_key\_vault\_name) | n/a |
+| <a name="output_uc_catalog_root_container_name"></a> [uc\_catalog\_root\_container\_name](#output\_uc\_catalog\_root\_container\_name) | n/a |
+| <a name="output_uc_catalog_root_storage_account_name"></a> [uc\_catalog\_root\_storage\_account\_name](#output\_uc\_catalog\_root\_storage\_account\_name) | n/a |
 <!-- END_TF_DOCS -->
 
 ---
