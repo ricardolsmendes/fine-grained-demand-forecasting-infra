@@ -69,8 +69,7 @@ resource "azurerm_key_vault_secret" "kaggle_key" {
 # ===================================================================================== #
 #                           STORAGE ACCOUNT RELATED RESOURCES                           #
 # ===================================================================================== #
-# Storage account for the Unity Catalog metastore.
-resource "azurerm_storage_account" "databricks_uc_metastore" {
+resource "azurerm_storage_account" "uc_catalog_root" {
   name                     = replace("${var.project_short_name}-${var.environment}", "-", "")
   resource_group_name      = data.azurerm_resource_group.this.name
   location                 = data.azurerm_resource_group.this.location
@@ -87,16 +86,15 @@ resource "azurerm_storage_account" "databricks_uc_metastore" {
 
 # Disabling the storage account network rules while we clarify the requirements.
 # resource "azurerm_storage_account_network_rules" "this" {
-#   storage_account_id         = azurerm_storage_account.databricks_uc_metastore.id
+#   storage_account_id         = azurerm_storage_account.uc_catalog_root.id
 #   default_action             = "Deny"
 #   ip_rules                   = var.networking_ip_rules
 #   virtual_network_subnet_ids = var.networking_virtual_network_subnet_ids
 # }
 
-# Storage container for the Unity Catalog metastore.
-resource "azurerm_storage_data_lake_gen2_filesystem" "databricks_uc_metastore" {
-  name               = "uc-metastore-${var.environment}"
-  storage_account_id = azurerm_storage_account.databricks_uc_metastore.id
+resource "azurerm_storage_data_lake_gen2_filesystem" "uc_catalog_root" {
+  name               = "unity-catalog-data-${var.environment}"
+  storage_account_id = azurerm_storage_account.uc_catalog_root.id
 }
 
 # ===================================================================================== #
@@ -119,7 +117,7 @@ resource "azurerm_databricks_access_connector" "this" {
 }
 
 resource "azurerm_role_assignment" "storage_blob_data_contributor" {
-  scope                = azurerm_storage_account.databricks_uc_metastore.id
+  scope                = azurerm_storage_account.uc_catalog_root.id
   role_definition_name = "Storage Blob Data Contributor"
   principal_id         = azurerm_databricks_access_connector.this.identity[0].principal_id
 }

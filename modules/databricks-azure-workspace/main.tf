@@ -21,19 +21,19 @@ resource "databricks_storage_credential" "this" {
   comment = "Used by the ${var.human_friendly_project_name} in the ${var.environment} environment."
 }
 
-resource "databricks_external_location" "uc_metastore" {
-  name = "${var.project_short_name}-uc-metastore-${var.environment}"
+resource "databricks_external_location" "catalog_storage_root" {
+  name = "${var.project_short_name}-uc-data-${var.environment}"
   url = format("abfss://%s@%s.dfs.core.windows.net",
-    var.uc_metastore_container_name,
-    var.uc_metastore_storage_account_name
+    var.catalog_storage_root_container_name,
+    var.catalog_root_storage_account_name
   )
   credential_name = databricks_storage_credential.this.id
-  comment         = "Unity Catalog metastore for the ${var.human_friendly_project_name} in the ${var.environment} environment."
+  comment         = "Unity Catalog data for the ${var.human_friendly_project_name} in the ${var.environment} environment."
 }
 
 resource "databricks_catalog" "this" {
   name         = replace("${var.project_short_name}-${var.environment}", "-", "_")
-  storage_root = databricks_external_location.uc_metastore.url
+  storage_root = databricks_external_location.catalog_storage_root.url
   comment      = "Catalog used by the ${var.human_friendly_project_name} in the ${var.environment} environment."
 
   properties = {
